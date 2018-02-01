@@ -9,12 +9,14 @@ driver.get("https://eservices.railway.gov.lk/schedule")
 assert "Train" in driver.title
 selStart = Select(driver.find_element_by_xpath('.//*[@id=\'startStation\']'))
 startOptions = selStart.options
+startLen=len(startOptions)-1
 selEnd = Select(driver.find_element_by_xpath('.//*[@id=\'endStation\']'))
 endOptions = selEnd.options
-for startIndex in range(1, len(startOptions) - 1):
+endLen=len(endOptions)-1
+for startIndex in range(1, startLen):
     selStart.select_by_index(startIndex)
     # do stuff
-    for endIndex in range(1, len(endOptions) - 1):
+    for endIndex in range(1, endLen):
         selEnd.select_by_index(endIndex)
         #click the button
         driver.find_element_by_xpath('.//*[@id=\'search_form_id\']/div/div[7]/div/button[1]').click()
