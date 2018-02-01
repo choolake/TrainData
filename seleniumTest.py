@@ -8,13 +8,13 @@ driver.get("https://eservices.railway.gov.lk/schedule")
 assert "Train" in driver.title
 selStart = Select(driver.find_element_by_xpath('.//*[@id=\'startStation\']'))
 startOptions = selStart.options
-selend = Select(driver.find_element_by_xpath('.//*[@id=\'endStation\']'))
-endOptions = selend.options
-for startindex in range(0, len(startOptions) - 1):
-    selstart.select_by_index(startindex)
+selEnd = Select(driver.find_element_by_xpath('.//*[@id=\'endStation\']'))
+endOptions = selEnd.options
+for startIndex in range(0, len(startOptions) - 1):
+    selStart.select_by_index(startIndex)
     # do stuff
-    for endindex in range(0, len(endOptions) - 1):
-        selend.select_by_index(endindex)
+    for endIndex in range(0, len(endOptions) - 1):
+        selEnd.select_by_index(endIndex)
         #click the button
         driver.find_element_by_xpath('.//*[@id=\'search_form_id\']/div/div[7]/div/button[1]').click()
         driver.implicitly_wait(10) # seconds
