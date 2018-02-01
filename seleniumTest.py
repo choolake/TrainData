@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
+from selenium.common.exceptions import NoSuchElementException
 
 driver = webdriver.Firefox()
 driver.get("https://eservices.railway.gov.lk/schedule")
@@ -19,11 +20,12 @@ for startIndex in range(1, len(startOptions) - 1):
         #click the button
         driver.find_element_by_xpath('.//*[@id=\'search_form_id\']/div/div[7]/div/button[1]').click()
         driver.implicitly_wait(10) # seconds
-        te1 =driver.find_element_by_xpath(".//*[@id='es-content']/div[6]/div").text
-        if not te1:
-             print( "error occured while start ".startIndex" and end ".endIndex)
-	else:
+	try:
+            te1 =driver.find_element_by_xpath(".//*[@id='es-content']/div[6]/div").text
             print(te1)
-            driver.execute_script("window.history.go(-1)")
+            driver.get("https://eservices.railway.gov.lk/schedule")
+        except NoSuchElementException:
+            print( "error occured while start ", startIndex," and end ", endIndex)
+            pass
 #driver.close()
 
