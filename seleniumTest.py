@@ -9,7 +9,6 @@ driver.get("https://eservices.railway.gov.lk/schedule")
 assert "Train" in driver.title
 selStart = Select(driver.find_element_by_xpath('.//*[@id=\'startStation\']'))
 startOptions = selStart.options
-print startOptions
 selEnd = Select(driver.find_element_by_xpath('.//*[@id=\'endStation\']'))
 endOptions = selEnd.options
 for startIndex in range(1, len(startOptions) - 1):
@@ -25,6 +24,7 @@ for startIndex in range(1, len(startOptions) - 1):
             print(te1)
             driver.get("https://eservices.railway.gov.lk/schedule")
         except NoSuchElementException:
+            #print (Error Occured...)
             print( "error occured while start ", startIndex," and end ", endIndex)
             pass
 #driver.close()
