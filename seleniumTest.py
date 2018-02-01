@@ -20,4 +20,5 @@ for startIndex in range(0, len(startOptions) - 1):
         driver.implicitly_wait(10) # seconds
         te1 =driver.find_element_by_xpath(".//*[@id='es-content']/div[6]/div").text
         print(te1)
+        driver.execute_script("window.history.go(-1)")
 #driver.close()
