@@ -10,10 +10,10 @@ selStart = Select(driver.find_element_by_xpath('.//*[@id=\'startStation\']'))
 startOptions = selStart.options
 selend = Select(driver.find_element_by_xpath('.//*[@id=\'endStation\']'))
 endOptions = selend.options
-startindex in range(0, len(startOptions) - 1)):
+for startindex in range(0, len(startOptions) - 1):
     selstart.select_by_index(startindex)
     # do stuff
-    endindex in range(0, len(endOptions) - 1)):
+    for endindex in range(0, len(endOptions) - 1):
         selend.select_by_index(endindex)
         #click the button
         driver.find_element_by_xpath('.//*[@id=\'search_form_id\']/div/div[7]/div/button[1]').click()
